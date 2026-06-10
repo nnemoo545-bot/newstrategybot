@@ -1,0 +1,14 @@
+[Unit]
+Description=Trading bot service
+After=network.target
+
+[Service]
+User=trader
+WorkingDirectory=/home/trader/trading_bot
+EnvironmentFile=/home/trader/trading_bot/.env
+ExecStart=/usr/bin/docker run --rm --env-file /home/trader/trading_bot/.env trading_bot_image:latest
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

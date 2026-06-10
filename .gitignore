@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.env
+trading.db
+*.sqlite
+.vscode/
+.dist/
+.idea/
+node_modules/

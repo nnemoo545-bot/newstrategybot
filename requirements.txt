@@ -1,0 +1,9 @@
+python-dotenv
+pydantic
+sqlalchemy>=1.4
+alembic
+requests
+python-telegram-bot~=20.3
+uvloop
+pytest
+aiosqlite
