@@ -1,9 +1,10 @@
+# Update requirements to avoid pydantic v2 BaseSettings issue and make environment reproducible
 python-dotenv
 pydantic
+pydantic-settings
 sqlalchemy>=1.4
 alembic
 requests
 python-telegram-bot~=20.3
-uvloop
 pytest
 aiosqlite
