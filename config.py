@@ -1,18 +1,16 @@
-# Copilot prompt:
-# "Provide typed settings using pydantic BaseSettings for Telegram token, owner id, Binance keys, DB url, poll interval and testnet flag."
-from pydantic import BaseSettings
+import os
+from dotenv import load_dotenv
 
-class Settings(BaseSettings):
-    TELEGRAM_TOKEN: str
-    OWNER_TELEGRAM_ID: int
-    BINANCE_API_KEY: str
-    BINANCE_API_SECRET: str
-    BINANCE_TESTNET: bool = True
-    DATABASE_URL: str = "sqlite:///./trading.db"
-    POLL_INTERVAL_SECONDS: int = 5
+# Load .env file (if present)
+load_dotenv()
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+class Settings:
+    TELEGRAM_TOKEN: str = os.getenv("TELEGRAM_TOKEN", "")
+    OWNER_TELEGRAM_ID: int = int(os.getenv("OWNER_TELEGRAM_ID") or 0)
+    BINANCE_API_KEY: str = os.getenv("BINANCE_API_KEY", "")
+    BINANCE_API_SECRET: str = os.getenv("BINANCE_API_SECRET", "")
+    BINANCE_TESTNET: bool = os.getenv("BINANCE_TESTNET", "true").lower() in ("1", "true", "yes")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./trading.db")
+    POLL_INTERVAL_SECONDS: int = int(os.getenv("POLL_INTERVAL_SECONDS") or 5)
 
 settings = Settings()
